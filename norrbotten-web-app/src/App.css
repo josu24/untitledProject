@@ -1,0 +1,153 @@
+@import url("https://use.typekit.net/njp6yfr.css");
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+  user-select: none;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+}
+
+body {
+  padding: 0;
+  color: #ff3773;
+  font-family: "rift-soft", sans-serif;
+  font-weight: 600;
+  background-color: black;
+}
+
+a {
+  text-decoration: none;
+  color: #ff3773;
+  transition: color 0.3s ease;
+  font-size: 1em;
+  width: 100%;
+}
+
+nav li {
+  position: relative;
+  display: block;
+  opacity: 0;
+  cursor: pointer;
+}
+
+nav li > ul {
+  position: absolute;
+  pointer-events: none;
+  padding-left: 0;
+}
+
+nav > ul {
+  display: flex;
+  padding-left: 0;
+}
+
+nav > ul > li {
+  pointer-events: all;
+  opacity: 1;
+}
+ul li a {
+  white-space: nowrap;
+  display: block;
+}
+
+li:hover > ul {
+  pointer-events: initial;
+}
+
+li:hover > ul > li,
+ul:hover > li {
+  opacity: 1;
+}
+
+nav > ul > li li ul {
+  transform: translateX(100%);
+  top: 0;
+  right: 0;
+}
+nav {
+  padding: 0;
+}
+nav a {
+  background: transparent;
+  color: #f5aead;
+  min-width: 100px;
+  margin: 0px 26px 26px 0px;
+  box-sizing: border-box;
+  border-radius: 1px;
+  position: relative;
+}
+nav a:hover:before {
+  content: "";
+  top: 0;
+  left: 0;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+nav li > ul > li > a + ul:after {
+  content: "";
+  position: absolute;
+  top: 20px;
+  transition: opacity 0.6, transform 0s;
+}
+nav > ul > li > ul > li {
+  transition: transform 0.9s, opacity 0.6s;
+  transform: translateY(-50%);
+  opacity: 0;
+}
+nav > ul > li:hover > ul > li,
+nav > ul > li.hover > ul > li {
+  transform: translateY(0%);
+  opacity: 1;
+}
+
+li > ul > li > ul > li {
+  transition: transform 0.6s, opacity 0.6s;
+  transform: translateX(195px) translateY(0%);
+  opacity: 0;
+}
+li > ul > li:hover > ul > li,
+li > ul > li.hover > ul > li {
+  transform: translateX(0) translateY(0%);
+  opacity: 1;
+}
+
+#logo {
+  opacity: 0;
+  position: absolute;
+  top: 0;
+}
+
+#logo:hover {
+  font-style: normal;
+  cursor: default;
+}
+
+ul > li:hover > #logo {
+  transition: transform 0.9s, opacity 0.6s;
+  transform: translateX(32px);
+  opacity: 1;
+}
+
+.background {
+  /* Set rules to fill background */
+  min-height: 100%;
+  min-width: 1024px;
+
+  /* Set up proportionate scaling */
+  width: 100%;
+  height: auto;
+
+  /* Set up positioning */
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
