@@ -12,12 +12,12 @@ const fadeIn = keyframes`
   }
 `;
 const Text1 = styled("p")`
-  padding: 2% 2%;
-  font-size: 1.3em;
-  text-align: justify;
+  padding: 5% 2% 2% 2%;
+  font-size: 2.5em;
+  text-align: center;
   cursor: default;
-  color: #ff3773;
-  font-weight: 400;
+  color: #016e5b;
+  font-weight: 500;
 `;
 const Text1_1 = styled("b")`
   font-weight: 600;
@@ -25,16 +25,24 @@ const Text1_1 = styled("b")`
 
 const Text2 = styled("p")`
   padding: 2% 2%;
-  font-size: 1.8em;
+  font-size: 1.3em;
   text-align: center;
   cursor: default;
   color: #016e5b;
-  font-weight: 500;
+  font-weight: 400;
+`;
+const Text22 = styled("p")`
+  padding: 2% 2%;
+  font-size: 1.6em;
+  text-align: center;
+  cursor: default;
+  color: #016e5b;
+  font-weight: 400;
 `;
 
 const Text3 = styled("p")`
   padding: 2% 2%;
-  font-size: 1.3em;
+  font-size: 1.2em;
   text-align: center;
   cursor: default;
   color: #016e5b;
@@ -43,22 +51,23 @@ const Text3 = styled("p")`
 const StoryContainer0 = styled("div")`
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: baseline;
   width: 620px;
-  height: 88%;
-  background-color: rgba(0, 0, 0, 0.7);
+  height: 80%;
+  background-color: rgba(0, 0, 0, 0);
 `;
 
 const StoryContainer1 = styled("div")`
   display: flex;
+  flex-direction: column;
   width: 620px;
   min-width: 620px;
-  height: 200px;
+  min-height: 200px;
   max-height: 200px;
   animation: ${fadeIn};
   animation-duration: 1s;
   transition: background-color 1.5s ease;
-  background-color: rgba(0, 0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.8);
   label: StoryContainer1;
   &:hover {
     background-color: rgba(0, 0, 0, 1);
@@ -70,15 +79,24 @@ const StoryContainer2 = styled("div")`
   flex-direction: column;
   width: 620px;
   min-width: 620px;
-  height: 100px;
+  height: 120px;
   animation: ${fadeIn};
   animation-duration: 4s;
   transition: background-color 1.5s ease;
-  background-color: rgba(0, 0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.8);
   label: StoryContainer2;
   &:hover {
     background-color: rgba(0, 0, 0, 1);
   }
+`;
+const SecondAndLineContainer = styled("div")`
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  width: 620px;
+
+  min-width: 620px;
+  height: fill-available;
 `;
 
 export default class Story extends React.Component {
@@ -91,33 +109,32 @@ export default class Story extends React.Component {
         <StoryContainer0>
           <StoryContainer1>
             <Text1>
-              "After rising sealevels and failed crops due to global warming,
-              people face <u>three</u> choices -{" "}
-              <Text1_1>revolt, migrate or die.</Text1_1>
+              <Text1_1> Designer</Text1_1> & <Text1_1> Developer</Text1_1>
               <br />
-              <br />A series of mass migrations takes place all over the world
-              and new metropolitan areas arise around the{" "}
-              <Text1_1>new waterfronts.</Text1_1>
-              <br />
-              <br />
-              These vast, previously uninhabited areas around the north- and
-              southpole afflicted by isostatic rebound, are now the most densly
-              populated metros in the world"
             </Text1>
+            <Text3>from northern sweden</Text3>
+            <Text22>
+              currently based in gothenburg looking for my{" "}
+              <Text1_1>next challenge</Text1_1>
+            </Text22>
           </StoryContainer1>
-
-          <StoryContainer2>
-            <Text2>
-              -->> CAPSULE WARDROBE FOR <u>URBAN MOUNTAINEERS</u>
-              <br />
-            </Text2>
-            <Text3>
-              <b>13</b> non-seasonal pieces made to be{" "}
-              <Text1_1>interchanged</Text1_1> and <Text1_1>combined</Text1_1> in
-              multiple ways
-            </Text3>
-          </StoryContainer2>
-          <StoryLine />
+          <SecondAndLineContainer>
+            <StoryContainer2>
+              <Text2>
+                Latest project: CAPSULE Collection
+                <br />
+              </Text2>
+              <Text3>
+                <b>13</b> non-seasonal pieces made to be{" "}
+                <Text1_1>interchanged</Text1_1> and <Text1_1>combined</Text1_1>{" "}
+                in multiple ways
+                <br />
+                <br />
+                developed in collaboration with Victor isaksson pirtti
+              </Text3>
+            </StoryContainer2>
+            <StoryLine />
+          </SecondAndLineContainer>
         </StoryContainer0>
       </ContentContainer>
     );

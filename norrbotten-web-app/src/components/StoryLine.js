@@ -3,9 +3,10 @@ import styled, { keyframes } from "react-emotion";
 
 const Line_wrapper = styled("div")`
   display: flex;
+  align-self: flex-end;
   position: relative;
   min-height: 3px;
-  width: 100%%;
+  width: 100%;
   bottom: 0;
   label: StoryLine;
 `;

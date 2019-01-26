@@ -8,7 +8,7 @@ import Story from "./components/Story";
 import Backdrop from "./components/Backdrop";
 import Divider from "./components/Divider";
 import ContentOverline from "./components/ContentOverline";
-import GalleryContainer from "./components/GalleryContainer";
+import AtelierContainer from "./components/AtelierContainer";
 import ProductInfoLine from "./components/ProductInfoLine";
 import ProductContainer from "./components/ProductContainer";
 
@@ -50,8 +50,9 @@ const app = css`
 `;
 const navContainer = css`
   z-index: 10;
-  width: fit-content;
-  margin-left: 3%;
+  width: 25%;
+  margin-left: 20%;
+  margin-top: 7%;
   display: flex;
   justify-content: flex-start;
   label: navContainer;
@@ -69,15 +70,19 @@ const contentPlaceholder = css`
 `;
 const navContainerMen = css`
   padding: 0;
-  text-align: left;
+  text-align: center;
 `;
 const logo = css`
-  background-color: #f5aead;
+  background: linear-gradient(
+    90deg,
+    rgba(245, 174, 173, 0.9) 50%,
+    rgba(255, 55, 115, 0.9) 100%
+  );
   border-radius: 0;
   width: 0;
   margin: 0;
-  height: 32px;
-  min-width: 94px !important;
+  height: 42px;
+  width: 294px !important;
   text-align: center;
   justify-content: center;
   align-items: center;
@@ -85,8 +90,8 @@ const logo = css`
 `;
 const Text = styled("p")`
   padding-top: 6px;
-  font-size: 1.2em;
-  color: rgba(255, 55, 115, 0.8);
+  font-size: 1.6em;
+  color: black;
 `;
 
 class App extends Component {
@@ -112,13 +117,13 @@ class App extends Component {
     }));
     let bgIndex;
     switch (listItemClicked) {
-      case "Gallery":
+      case "Atelier":
         bgIndex = 0;
         break;
       case "Story":
         bgIndex = 3;
         break;
-      case "Garments":
+      case "Capsule Collection":
         bgIndex = 1;
         break;
     }
@@ -139,7 +144,7 @@ class App extends Component {
 
   handleMouseOverEmail(e) {
     const { contentShowing } = this.state;
-    if (contentShowing && contentShowing === "Garments") {
+    if (contentShowing && contentShowing === "Capsule Collection") {
       this.setState({
         bgIndex: 2
       });
@@ -148,7 +153,7 @@ class App extends Component {
 
   handleMouseOutEmail(e) {
     const { contentShowing } = this.state;
-    if (contentShowing && contentShowing === "Garments") {
+    if (contentShowing && contentShowing === "Capsule Collection") {
       this.setState({
         bgIndex: 1
       });
@@ -159,7 +164,7 @@ class App extends Component {
       showInfo: !prevState.showInfo
     }));
   };
-  callbackToGalleryContainer = data => {
+  callbackToAtelierContainer = data => {
     let bgIndex;
     switch (data) {
       case "standing1":
@@ -208,31 +213,27 @@ class App extends Component {
               <nav className={navContainerMen}>
                 <ul>
                   <li>
-                    <a>
-                      <FontAwesomeIcon
-                        icon="square-full"
-                        size="2x"
-                        color="rgba(255, 55, 115, 0.8)"
-                      />
-                    </a>
+                    <a />
 
                     <a id="logo" className={logo}>
-                      <Text>$ Lab la Bla</Text>
+                      <Text>Joel Sundqvist</Text>
                     </a>
                     <ul>
                       <MenuItem
-                        item={"Gallery"}
-                        active={contentShowing === "Gallery" ? true : false}
-                        click={this.handleClick}
-                      />
-                      <MenuItem
-                        item={"Garments"}
-                        active={contentShowing === "Garments" ? true : false}
-                        click={this.handleClick}
-                      />
-                      <MenuItem
                         item={"Story"}
                         active={contentShowing === "Story" ? true : false}
+                        click={this.handleClick}
+                      />
+                      <MenuItem
+                        item={"Capsule Collection"}
+                        active={
+                          contentShowing === "Capsule Collection" ? true : false
+                        }
+                        click={this.handleClick}
+                      />
+                      <MenuItem
+                        item={"Atelier"}
+                        active={contentShowing === "Atelier" ? true : false}
                         click={this.handleClick}
                       />
                     </ul>
@@ -248,16 +249,11 @@ class App extends Component {
             handleClose={this.handleClose}
           />
           <div className={contentPlaceholder}>
-            {contentShowing && contentShowing !== "Gallery" ? (
+            {contentShowing && contentShowing !== "Atelier" ? (
               <ContentOverline handleClose={this.handleClose} />
             ) : null}
-            <EmailBtn
-              onMouseOver={this.handleMouseOverEmail}
-              onMouseOut={this.handleMouseOutEmail}
-              onClick={this.handleEmailClick}
-            />
 
-            {contentShowing === "Garments" ? (
+            {contentShowing === "Capsule Collection" ? (
               <ProductContainer
                 callbackFromApp={this.callbackToProductContainer.bind(this)}
                 product={null}
@@ -268,15 +264,14 @@ class App extends Component {
               <Story handleClose={this.handleClose} rerender={dividerVisible} />
             ) : null}
             {showInfo ? <ProductInfoLine /> : null}
+            {contentShowing === "Atelier" ? (
+              <AtelierContainer
+                handleClose={this.handleClose}
+                rerender={dividerVisible}
+              />
+            ) : null}
           </div>
         </div>
-        {contentShowing === "Gallery" || bgIndex === 0 || bgIndex >= 4 ? (
-          <GalleryContainer
-            callbackFromApp={this.callbackToGalleryContainer.bind(this)}
-            showExplore={contentShowing === "Gallery"}
-            handleClose={this.handleClose}
-          />
-        ) : null}
       </div>
     );
   }

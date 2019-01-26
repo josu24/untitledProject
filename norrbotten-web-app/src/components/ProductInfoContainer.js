@@ -32,7 +32,7 @@ const Container = styled("div")`
   animation-duration: 1s;
   animation-delay: 0.5s;
   animation-fill-mode: both;
-  margin-left: 35%;
+  margin-left: 15%;
   white-space: nowrap;
   width: min-content;
   label: INFOTEXT;

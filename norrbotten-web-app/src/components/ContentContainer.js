@@ -13,7 +13,6 @@ const Container = styled("div")`
   display: flex;
   justify-content: flex-start;
   width: 95%;
-  margin-left: 5%;
   height: 500px;
   min-height: 500px;
   label: ContentContainer;

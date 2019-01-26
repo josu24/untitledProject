@@ -3,7 +3,7 @@ import styled, { keyframes } from "react-emotion";
 import { css } from "react-emotion";
 
 const DividerPlaceHolder = styled("div")`
-  width: 5%;
+  width: 3px;
   display: flex;
   @media screen and (max-width: 1053px) {
     display: none;

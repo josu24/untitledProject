@@ -5,7 +5,6 @@ const Line_wrapper = styled("div")`
   display: flex;
   position: relative;
   min-height: 3px;
-  margin-left: 5%;
   width: 95%;
   top: 0;
   label: ContentOverline;
