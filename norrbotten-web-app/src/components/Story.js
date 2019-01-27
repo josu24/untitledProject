@@ -13,11 +13,20 @@ const fadeIn = keyframes`
 `;
 const Text1 = styled("p")`
   padding: 5% 2% 2% 2%;
-  font-size: 2.5em;
+  font-size: 1.5em;
   text-align: center;
   cursor: default;
   color: #016e5b;
-  font-weight: 500;
+  font-weight: 400;
+`;
+const Text11 = styled("p")`
+  padding: 2% 2% 2% 2%;
+  font-size: 1.2em;
+  text-align: center;
+  cursor: default;
+  color: #016e5b;
+  font-weight: 400;
+  cursor: pointer;
 `;
 const Text1_1 = styled("b")`
   font-weight: 600;
@@ -26,14 +35,6 @@ const Text1_1 = styled("b")`
 const Text2 = styled("p")`
   padding: 2% 2%;
   font-size: 1.3em;
-  text-align: center;
-  cursor: default;
-  color: #016e5b;
-  font-weight: 400;
-`;
-const Text22 = styled("p")`
-  padding: 2% 2%;
-  font-size: 1.6em;
   text-align: center;
   cursor: default;
   color: #016e5b;
@@ -53,7 +54,7 @@ const StoryContainer0 = styled("div")`
   flex-direction: column;
   justify-content: baseline;
   width: 620px;
-  height: 80%;
+  height: 100%;
   background-color: rgba(0, 0, 0, 0);
 `;
 
@@ -62,12 +63,12 @@ const StoryContainer1 = styled("div")`
   flex-direction: column;
   width: 620px;
   min-width: 620px;
-  min-height: 200px;
-  max-height: 200px;
+  min-height: 220px;
+  max-height: 220px;
   animation: ${fadeIn};
   animation-duration: 1s;
   transition: background-color 1.5s ease;
-  background-color: rgba(0, 0, 0, 0.8);
+  background-color: rgba(0, 0, 0, 0.9);
   label: StoryContainer1;
   &:hover {
     background-color: rgba(0, 0, 0, 1);
@@ -94,12 +95,14 @@ const SecondAndLineContainer = styled("div")`
   flex-direction: column;
   justify-content: flex-end;
   width: 620px;
-
   min-width: 620px;
   height: fill-available;
 `;
 
 export default class Story extends React.Component {
+  handleClick() {
+    window.location.href = `mailto:joelsundqvist@protonmail.com`;
+  }
   render() {
     return (
       <ContentContainer
@@ -109,17 +112,23 @@ export default class Story extends React.Component {
         <StoryContainer0>
           <StoryContainer1>
             <Text1>
-              <Text1_1> Designer</Text1_1> & <Text1_1> Developer</Text1_1>
+              My name is Joel Sundqvist and I'm a Designer & Developer from
+              Luleå.
               <br />
+              <br /> I'm Currently located in Gothenburg looking for a creative
+              and challenging workplace. Got a lead? Contact me @
             </Text1>
-            <Text3>from northern sweden</Text3>
-            <Text22>
-              currently based in gothenburg looking for my{" "}
-              <Text1_1>next challenge</Text1_1>
-            </Text22>
+            <Text11 onClick={this.handleClick}>
+              {" "}
+              <u>joelsundqvist@protonmail.com</u>
+            </Text11>
           </StoryContainer1>
-          <SecondAndLineContainer>
-            <StoryContainer2>
+          <SecondAndLineContainer onClick={this.props.handleClose}>
+            <StoryContainer2
+              onClick={e => {
+                e.stopPropagation();
+              }}
+            >
               <Text2>
                 Latest project: CAPSULE Collection
                 <br />

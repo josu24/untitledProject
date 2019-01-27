@@ -16,7 +16,7 @@ const Text1 = styled("p")`
   font-size: 0.9em;
   text-align: center;
   cursor: default;
-  color: rgba(255, 55, 115, 0.9);
+  color: rgba(245, 174, 173, 0.9);
   font-weight: 300;
 `;
 const Text2 = styled("p")`
@@ -24,12 +24,22 @@ const Text2 = styled("p")`
   font-size: 1.6em;
   text-align: center;
   cursor: default;
-  color: rgba(255, 55, 115, 0.9);
+  color: black;
+  opacity: 0.7;
+  background: linear-gradient(
+    90deg,
+    rgb(255, 55, 115) 30%,
+    rgb(245, 174, 173) 100%
+  );
   font-weight: 400;
   width: 50%;
   align-self: center;
   border: solid;
   cursor: pointer;
+  transition: opacity 1.5s ease;
+  &:hover {
+    opacity: 1;
+  }
 `;
 
 const StoryContainer0 = styled("div")`
@@ -51,11 +61,8 @@ const StoryContainer1 = styled("div")`
   animation: ${fadeIn};
   animation-duration: 1s;
   transition: background-color 1.5s ease;
-  background-color: rgba(0, 0, 0, 0.7);
+  background-color: rgba(0, 0, 0, 0.6);
   label: StoryContainer1;
-  &:hover {
-    background-color: rgba(0, 0, 0, 1);
-  }
 `;
 
 export default class Story extends React.Component {
@@ -68,8 +75,12 @@ export default class Story extends React.Component {
         handleClose={this.props.handleClose}
         rerender={this.props.rerender}
       >
-        <StoryContainer0>
-          <StoryContainer1>
+        <StoryContainer0 onClick={this.props.handleClose}>
+          <StoryContainer1
+            onClick={e => {
+              e.stopPropagation();
+            }}
+          >
             <Text1>Atelier located in norrbotten</Text1>
             <Text2 onClick={this.handleClick}>Go to Website</Text2>
           </StoryContainer1>

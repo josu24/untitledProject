@@ -5,9 +5,6 @@ import { css } from "react-emotion";
 const DividerPlaceHolder = styled("div")`
   width: 3px;
   display: flex;
-  @media screen and (max-width: 1053px) {
-    display: none;
-  }
 `;
 
 const LineWrapper = styled("div")`

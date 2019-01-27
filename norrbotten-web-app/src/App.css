@@ -17,7 +17,7 @@ body {
   padding: 0;
   color: #ff3773;
   font-family: "rift-soft", sans-serif;
-  font-weight: 600;
+  font-weight: 400;
   background-color: black;
 }
 
@@ -120,7 +120,7 @@ li > ul > li.hover > ul > li {
 }
 
 #logo {
-  opacity: 0.8;
+  opacity: 0.9;
   position: absolute;
   top: 0;
 }
@@ -133,20 +133,4 @@ li > ul > li.hover > ul > li {
 ul > li:hover > #logo {
   transition: opacity 0.6s;
   opacity: 1;
-}
-
-.background {
-  /* Set rules to fill background */
-  min-height: 100%;
-  min-width: 1024px;
-
-  /* Set up proportionate scaling */
-  width: 100%;
-  height: auto;
-
-  /* Set up positioning */
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: -1;
 }

@@ -1,10 +1,10 @@
 import React, { Component } from "react";
-import styled, { css } from "react-emotion";
+import styled, { css, keyframes } from "react-emotion";
 import "./App.css";
 import "./reset.css";
+import Img from "react-image";
 
-import EmailBtn from "./components/EmailBtn";
-import Story from "./components/Story";
+import About from "./components/Story";
 import Backdrop from "./components/Backdrop";
 import Divider from "./components/Divider";
 import ContentOverline from "./components/ContentOverline";
@@ -12,21 +12,22 @@ import AtelierContainer from "./components/AtelierContainer";
 import ProductInfoLine from "./components/ProductInfoLine";
 import ProductContainer from "./components/ProductContainer";
 
-import getBackground from "./backgroundFactory";
-import CrossfadeImage from "react-crossfade-image";
-
-import { library } from "@fortawesome/fontawesome-svg-core";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSquareFull } from "@fortawesome/free-solid-svg-icons";
 import MenuItem from "./components/MenuItem";
 
-library.add(faSquareFull);
-
+const fadeIn = keyframes`
+  from {
+    opacity: 0;
+  }
+  to{
+    opacity: 1;
+  }
+`;
 const all = css`
   display: flex;
   flex-direction: column;
   height: 100%
   label: all;
+  
 `;
 const bg = {
   minHeight: "100%",
@@ -37,11 +38,29 @@ const bg = {
   top: "0",
   left: "0"
 };
+
+const background = css`
+  min-height: 100%;
+  min-width: 1024px;
+  width: 100%;
+  max-height: auto;
+  position: fixed;
+  top: 0;
+  left: 0;
+  animation: ${fadeIn};
+  animation-duration: 2s;
+  animation-delay: 0.5s;
+  animation-fill-mode: both;
+`;
+
 const head = css`
   height: 5%;
   min-height: 5%;
   display: flex;
   justify-content: flex-end;
+  @media screen and (max-height: 550px) {
+    display: none;
+  }
 `;
 const app = css`
   height: fill-available;
@@ -51,13 +70,18 @@ const app = css`
 const navContainer = css`
   z-index: 10;
   width: 25%;
+  height: fit-content;
+  min-width: 294px;
   margin-left: 20%;
   margin-top: 7%;
   display: flex;
   justify-content: flex-start;
   label: navContainer;
-  @media screen and (max-width: 880px) {
-    display: none;
+  @media screen and (max-width: 1124px) {
+    margin-left: 0;
+  }
+  @media screen and (max-width: 1000px) {
+    margin-left: 0;
   }
 `;
 const contentPlaceholder = css`
@@ -67,6 +91,9 @@ const contentPlaceholder = css`
   margin-right: 3%;
   display: flex;
   label: contentPlaceholder;
+  @media screen and (max-width: 600px) {
+    display: none;
+  }
 `;
 const navContainerMen = css`
   padding: 0;
@@ -75,8 +102,8 @@ const navContainerMen = css`
 const logo = css`
   background: linear-gradient(
     90deg,
-    rgba(245, 174, 173, 0.9) 50%,
-    rgba(255, 55, 115, 0.9) 100%
+    rgba(245, 174, 173, 1) 50%,
+    rgba(255, 55, 115, 1) 100%
   );
   border-radius: 0;
   width: 0;
@@ -94,6 +121,16 @@ const Text = styled("p")`
   color: black;
 `;
 
+const Foo = styled("div")`
+  background: red;
+  label: FOO;
+  opacity: 0;
+  animation: ${fadeIn};
+  animation-duration: 2s;
+  animation-delay: 0.5s;
+  animation-fill-mode: both;
+`;
+
 class App extends Component {
   constructor(props) {
     super(props);
@@ -101,13 +138,10 @@ class App extends Component {
       contentShowing: null,
       dividerToggle: true,
       dividerVisible: false,
-      bgIndex: 0,
       showInfo: false
     };
     this.handleClick = this.handleClick.bind(this);
     this.handleClose = this.handleClose.bind(this);
-    this.handleMouseOverEmail = this.handleMouseOverEmail.bind(this);
-    this.handleMouseOutEmail = this.handleMouseOutEmail.bind(this);
   }
 
   handleClick(listItemClicked) {
@@ -115,77 +149,24 @@ class App extends Component {
       dividerToggle: !prevState.dividerToggle,
       contentShowing: listItemClicked
     }));
-    let bgIndex;
-    switch (listItemClicked) {
-      case "Atelier":
-        bgIndex = 0;
-        break;
-      case "Story":
-        bgIndex = 3;
-        break;
-      case "Capsule Collection":
-        bgIndex = 1;
-        break;
-    }
+
     this.setState({
-      showInfo: false,
-      bgIndex
+      showInfo: false
     });
   }
 
   handleClose() {
     this.setState({
       contentShowing: null,
-      bgIndex: 0,
       dividerVisible: false,
       showInfo: false
     });
   }
 
-  handleMouseOverEmail(e) {
-    const { contentShowing } = this.state;
-    if (contentShowing && contentShowing === "Capsule Collection") {
-      this.setState({
-        bgIndex: 2
-      });
-    }
-  }
-
-  handleMouseOutEmail(e) {
-    const { contentShowing } = this.state;
-    if (contentShowing && contentShowing === "Capsule Collection") {
-      this.setState({
-        bgIndex: 1
-      });
-    }
-  }
   callbackToProductContainer = () => {
     this.setState(prevState => ({
       showInfo: !prevState.showInfo
     }));
-  };
-  callbackToAtelierContainer = data => {
-    let bgIndex;
-    switch (data) {
-      case "standing1":
-        bgIndex = 4;
-        break;
-      case "standing2":
-        bgIndex = 7;
-        break;
-      case "standing3":
-        bgIndex = 6;
-        break;
-      case "sitting1":
-        bgIndex = 5;
-        break;
-      default:
-        bgIndex = 0;
-        break;
-    }
-    this.setState({
-      bgIndex
-    });
   };
 
   handleEmailClick() {
@@ -196,14 +177,25 @@ class App extends Component {
     const {
       contentShowing,
       dividerToggle,
-      bgIndex,
       dividerVisible,
       showInfo
     } = this.state;
-    const img = getBackground().image[bgIndex];
     return (
       <div className={all}>
-        <CrossfadeImage src={img} style={bg} duration={1000} delay={500} />
+        <img
+          className={background}
+          src={require("./backgroundImages/CR1.jpg")}
+        />
+        {contentShowing && contentShowing !== "About" ? (
+          <Img
+            src={require("./backgroundImages/CR3.jpg")}
+            style={bg}
+            container={children => {
+              return <Foo>{children}</Foo>;
+            }}
+          />
+        ) : null}
+
         <div className={head}>{/* <Head /> */}</div>
         <div className={app}>
           {contentShowing ? <Backdrop onClick={this.handleClose} /> : null}
@@ -220,8 +212,8 @@ class App extends Component {
                     </a>
                     <ul>
                       <MenuItem
-                        item={"Story"}
-                        active={contentShowing === "Story" ? true : false}
+                        item={"About"}
+                        active={contentShowing === "About" ? true : false}
                         click={this.handleClick}
                       />
                       <MenuItem
@@ -260,8 +252,8 @@ class App extends Component {
                 handleClose={this.handleClose}
                 rerender={dividerVisible}
               />
-            ) : contentShowing === "Story" ? (
-              <Story handleClose={this.handleClose} rerender={dividerVisible} />
+            ) : contentShowing === "About" ? (
+              <About handleClose={this.handleClose} rerender={dividerVisible} />
             ) : null}
             {showInfo ? <ProductInfoLine /> : null}
             {contentShowing === "Atelier" ? (

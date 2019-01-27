@@ -36,10 +36,7 @@ const Container = styled("div")`
   white-space: nowrap;
   width: min-content;
   label: INFOTEXT;
-  @media screen and (max-width: 1150px) {
-    margin-left: 25%;
-  }
-  @media screen and (max-width: 880px) {
+  @media screen and (max-width: 1200px) {
     margin-left: 0;
   }
   @media screen and (max-width: 620px) {
