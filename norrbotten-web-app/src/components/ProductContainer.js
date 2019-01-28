@@ -44,7 +44,14 @@ const NavBarTop = styled("div")`
   align-items: center;
   font-size: 1em;
   label: NavBarTop;
-  background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8));
+  color: rgba(0, 0, 0, 0.9);
+  background: linear-gradient(
+    90deg,
+    rgba(255, 55, 115, 0.9) 0%,
+    rgba(245, 174, 173, 0.9) 20%,
+    rgba(255, 255, 255, 0.9) 70%,
+    rgba(255, 255, 255, 0.9) 100%
+  );
 `;
 const ImageContainer = styled("div")`
   display: flex;
@@ -199,7 +206,10 @@ export default class ProductContainer extends React.Component {
 
           <NavBarBottom>
             <InfoBtn onClick={this.handleShowInfo}>
-              <FontAwesomeIcon icon="question-circle" color="#016E5B" />
+              <FontAwesomeIcon
+                icon="question-circle"
+                color="rgba(255,255,255,0.9)"
+              />
             </InfoBtn>
           </NavBarBottom>
 

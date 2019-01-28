@@ -9,6 +9,12 @@
 # production
 /build
 
+#2019-01-27
+#src/*
+#public/*
+#build/static/css/*.map
+#build/static/js/*.map
+
 # misc
 .DS_Store
 .env.local

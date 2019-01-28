@@ -23,8 +23,8 @@ const products = [
     image: [JS_1, JS_2, JS_3],
     text: (
       <Text>
-        Jumpsuit Version 100 <br /> <br /> <u>Featuring</u> <br /> <br />
-        Merino Lined Waterproof Softshell fabric
+        Jumpsuit Version 4 <br /> <br /> <u>Featuring</u> <br /> <br />
+        Waterproof Stretch Fabric
         <br />
         Built-in kangaroo pockets
         <br />
@@ -76,7 +76,9 @@ const products = [
     text: (
       <Text>
         Sling bag Version 1 <br /> <br /> <u>Featuring</u> <br /> <br />
-        Rip-proof kevlar for security
+        Rip-proof kevlar fabric for security
+        <br />
+        Magnetic fidlock buckle
         <br />
         waterproof zipper
       </Text>
@@ -90,7 +92,7 @@ const products = [
         bucket hat Version 1 <br /> <br /> <u>Featuring</u> <br /> <br />
         waterproof cotton fabric w/ kevlar panels
         <br />
-        two-parted brim
+        two-parted brim enabling wearing headphones
       </Text>
     )
   }

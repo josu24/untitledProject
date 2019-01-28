@@ -12,42 +12,87 @@ const fadeIn = keyframes`
   }
 `;
 const Text1 = styled("p")`
-  padding: 5% 2% 2% 2%;
-  font-size: 1.5em;
+  padding: 3% 1% 3% 1%;
+  font-family: eurostile-condensed, sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 1.4em;
   text-align: center;
   cursor: default;
-  color: #016e5b;
-  font-weight: 400;
+  color: rgba(245, 174, 173, 0.9);
+  animation: ${fadeIn};
+  animation-duration: 1s;
+  transition: background-color 1.5s ease;
+  background: linear-gradient(
+    90deg,
+    rgba(0, 0, 0, 0.9) 40%,
+    rgba(0, 0, 0, 0.6) 85%,
+    rgba(0, 0, 0, 0) 100%
+  );
+  label: StoryContainer1;
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+  }
 `;
 const Text11 = styled("p")`
-  padding: 2% 2% 2% 2%;
-  font-size: 1.2em;
+  font-size: 1.4em;
+  padding: 2% 1% 0 1%;
+  font-family: eurostile-condensed, sans-serif;
+
+  font-weight: 400;
+
+  font-style: normal;
   text-align: center;
   cursor: default;
-  color: #016e5b;
+  color: rgba(255, 255, 255, 0.7);
+  font-weight: 400;
+  animation: ${fadeIn};
+  animation-duration: 1s;
+  transition: background-color 1.5s ease;
+  background: linear-gradient(
+    90deg,
+    rgba(0, 0, 0, 0.9) 40%,
+    rgba(0, 0, 0, 0.7) 85%,
+    rgba(0, 0, 0, 0) 100%
+  );
+  label: StoryContainer1;
+  &:hover {
+    background-color: rgba(0, 0, 0, 1);
+  }
+`;
+const Text12 = styled("p")`
+  padding: 2% 1%;
+  font-size: 0.8em;
+  font-family: eurostile, sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  text-align: center;
+  cursor: default;
+  color: rgba(245, 174, 173, 0.9);
   font-weight: 400;
   cursor: pointer;
-`;
-const Text1_1 = styled("b")`
-  font-weight: 600;
 `;
 
 const Text2 = styled("p")`
   padding: 2% 2%;
   font-size: 1.3em;
+  font-family: eurostile-condensed, sans-serif;
+  font-weight: 400;
+  font-style: normal;
   text-align: center;
   cursor: default;
-  color: #016e5b;
-  font-weight: 400;
+  color: rgba(255, 255, 255, 0.7);
 `;
 
 const Text3 = styled("p")`
   padding: 2% 2%;
-  font-size: 1.2em;
+  font-size: 1em;
+  font-family: eurostile-condensed, sans-serif;
+  font-weight: 400;
+  font-style: normal;
   text-align: center;
   cursor: default;
-  color: #016e5b;
-  font-weight: 400;
+  color: rgba(255, 255, 255, 0.7);
 `;
 const StoryContainer0 = styled("div")`
   display: flex;
@@ -55,7 +100,6 @@ const StoryContainer0 = styled("div")`
   justify-content: baseline;
   width: 620px;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0);
 `;
 
 const StoryContainer1 = styled("div")`
@@ -63,16 +107,7 @@ const StoryContainer1 = styled("div")`
   flex-direction: column;
   width: 620px;
   min-width: 620px;
-  min-height: 220px;
-  max-height: 220px;
-  animation: ${fadeIn};
-  animation-duration: 1s;
-  transition: background-color 1.5s ease;
-  background-color: rgba(0, 0, 0, 0.9);
-  label: StoryContainer1;
-  &:hover {
-    background-color: rgba(0, 0, 0, 1);
-  }
+  height: fit-content;
 `;
 
 const StoryContainer2 = styled("div")`
@@ -84,7 +119,13 @@ const StoryContainer2 = styled("div")`
   animation: ${fadeIn};
   animation-duration: 4s;
   transition: background-color 1.5s ease;
-  background-color: rgba(0, 0, 0, 0.8);
+  background: linear-gradient(
+    90deg,
+    rgba(0, 0, 0, 0.5) 0%,
+    rgba(0, 0, 0, 0.9) 40%,
+    rgba(0, 0, 0, 0.5) 85%,
+    rgba(0, 0, 0, 0) 100%
+  );
   label: StoryContainer2;
   &:hover {
     background-color: rgba(0, 0, 0, 1);
@@ -97,6 +138,7 @@ const SecondAndLineContainer = styled("div")`
   width: 620px;
   min-width: 620px;
   height: fill-available;
+  label: SecondAndLineContainer;
 `;
 
 export default class Story extends React.Component {
@@ -112,15 +154,15 @@ export default class Story extends React.Component {
         <StoryContainer0>
           <StoryContainer1>
             <Text1>
-              My name is Joel Sundqvist and I'm a Designer & Developer from
-              Luleå.
-              <br />
-              <br /> I'm Currently located in Gothenburg looking for a creative
-              and challenging workplace. Got a lead? Contact me @
+              MY NAME IS JOEL AND I'M A DESIGNER & DEVELOPER FROM LULEÅ
             </Text1>
-            <Text11 onClick={this.handleClick}>
-              {" "}
-              <u>joelsundqvist@protonmail.com</u>
+            <Text11>
+              I'M CURRENTLY LOCATED IN GOTHENBURG LOOKING FOR A CREATIVE AND
+              CHALLENGING WORKPLACE. GOT A LEAD? CONTACT ME @
+              <Text12 onClick={this.handleClick}>
+                {" "}
+                joelsundqvist@protonmail.com
+              </Text12>
             </Text11>
           </StoryContainer1>
           <SecondAndLineContainer onClick={this.props.handleClose}>
@@ -130,16 +172,15 @@ export default class Story extends React.Component {
               }}
             >
               <Text2>
-                Latest project: CAPSULE Collection
+                LATEST PROJECT: CAPSULE COLLECTION
                 <br />
               </Text2>
               <Text3>
-                <b>13</b> non-seasonal pieces made to be{" "}
-                <Text1_1>interchanged</Text1_1> and <Text1_1>combined</Text1_1>{" "}
-                in multiple ways
+                <b>13</b> NON-SEASONAL PIECES MADE TO BE <b>INTERCHANGED</b> AND{" "}
+                <b>COMBINED</b> IN MULTIPLE WAYS
                 <br />
                 <br />
-                developed in collaboration with Victor isaksson pirtti
+                DEVELOPED IN COLLABORATION WITH VICTOR ISAKSSON PIRTTI
               </Text3>
             </StoryContainer2>
             <StoryLine />

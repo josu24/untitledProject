@@ -16,7 +16,7 @@ const Text1 = styled("p")`
   font-size: 0.9em;
   text-align: center;
   cursor: default;
-  color: rgba(245, 174, 173, 0.9);
+  color: rgba(255, 255, 255, 0.8);
   font-weight: 300;
 `;
 const Text2 = styled("p")`
@@ -28,8 +28,8 @@ const Text2 = styled("p")`
   opacity: 0.7;
   background: linear-gradient(
     90deg,
-    rgb(255, 55, 115) 30%,
-    rgb(245, 174, 173) 100%
+    rgb(255, 55, 115) 5%,
+    rgb(245, 174, 173) 30%
   );
   font-weight: 400;
   width: 50%;
@@ -61,7 +61,12 @@ const StoryContainer1 = styled("div")`
   animation: ${fadeIn};
   animation-duration: 1s;
   transition: background-color 1.5s ease;
-  background-color: rgba(0, 0, 0, 0.6);
+  background: linear-gradient(
+    90deg,
+    rgba(0, 0, 0, 0.7) 40%,
+    rgba(0, 0, 0, 0.5) 85%,
+    rgba(0, 0, 0, 0) 100%
+  );
   label: StoryContainer1;
 `;
 
