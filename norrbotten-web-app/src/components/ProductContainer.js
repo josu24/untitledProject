@@ -1,5 +1,7 @@
 import React from "react";
-import styled from "react-emotion";
+import styled, { css, keyframes } from "react-emotion";
+import RiseLoader from "react-spinners/RiseLoader";
+import Img from "react-image";
 import Lightbox from "react-image-lightbox";
 import "react-image-lightbox/style.css";
 import getProducts from "../productFactory";
@@ -8,13 +10,36 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faAngleLeft,
   faAngleRight,
-  faQuestionCircle,
-  faAngleUp
+  faQuestionCircle
 } from "@fortawesome/free-solid-svg-icons";
 import ContentContainer from "./ContentContainer";
 import ProductInfoContainer from "./ProductInfoContainer";
 
-library.add(faAngleLeft, faAngleRight, faQuestionCircle, faAngleUp);
+library.add(faAngleLeft, faAngleRight, faQuestionCircle);
+
+const fadeIn = keyframes`
+  0% {
+    opacity: 0;
+    
+  }
+  100%{
+    opacity: 1;
+  }
+`;
+const fadeInHeader = keyframes`
+  0% {
+    opacity: 0;
+    transform: translateX(-50%) scaleX(0);
+    
+  }
+  30% {
+      transform: translateX(0) scaleX(1);
+  }
+  100%{
+    opacity: 1;
+
+  }
+`;
 
 const ContentContainer2 = styled("div")`
   display: flex;
@@ -24,6 +49,7 @@ const ContentContainer2 = styled("div")`
   height: 500px;
   min-height: 500px;
   min-width: 334px;
+
   label: ContentContainer2;
 `;
 
@@ -52,12 +78,22 @@ const NavBarTop = styled("div")`
     rgba(255, 255, 255, 0.9) 70%,
     rgba(255, 255, 255, 0.9) 100%
   );
+  opacity: 0;
+  animation: ${fadeInHeader};
+  animation-duration: 2.5s;
+  animation-delay: 1s;
+  animation-fill-mode: forwards;
 `;
 const ImageContainer = styled("div")`
   display: flex;
   background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6));
   height: 90%;
   cursor: pointer;
+  opacity: 0;
+  animation: ${fadeIn};
+  animation-duration: 4s;
+  animation-delay: 1s;
+  animation-fill-mode: forwards;
 `;
 const NavBarBottom = styled("div")`
   display: flex;
@@ -65,7 +101,12 @@ const NavBarBottom = styled("div")`
   height: 5%;
   min-height: 30px;
   label: NavBarBtm;
-  background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8));
+  background: rgba(0, 0, 0, 0.7);
+  opacity: 0;
+  animation: ${fadeIn};
+  animation-duration: 4s;
+  animation-delay: 1s;
+  animation-fill-mode: forwards;
 `;
 const InfoBtn = styled("div")`
   display: flex;
@@ -88,10 +129,25 @@ const Name = styled("h2")`
   font-weight: 500;
 `;
 
-const Image = styled("img")`
-  display: flex;
-  max-width: 100%;
-  max-height: 100%;
+var ImageStyle = {
+  display: "flex",
+  maxWidth: "100%",
+  maxHeight: "100%"
+};
+
+const cssloading = css`
+  margin-left: 107px;
+  margin-top: 210px;
+`;
+
+const Text = styled("span")`
+  font-size: 1.2em;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.8);
+  padding-right: 5px;
+  &:hover {
+    color: rgba(255, 55, 115, 0.8);
+  }
 `;
 
 export default class ProductContainer extends React.Component {
@@ -105,7 +161,8 @@ export default class ProductContainer extends React.Component {
       imageIndex: 0,
       dragging: false,
       isOpen: false,
-      photoIndex: 0
+      photoIndex: 0,
+      loading: true
     };
     this.handleShowInfo = this.handleShowInfo.bind(this);
     this.onNextImageClick = this.onNextImageClick.bind(this);
@@ -159,7 +216,14 @@ export default class ProductContainer extends React.Component {
   }
 
   render() {
-    const { products, productIndex, showInfo, imageIndex, isOpen } = this.state;
+    const {
+      products,
+      productIndex,
+      showInfo,
+      imageIndex,
+      isOpen,
+      loading
+    } = this.state;
     const product = products ? products[productIndex] : null;
 
     return (
@@ -193,22 +257,29 @@ export default class ProductContainer extends React.Component {
               console.log("SCROLL");
             }}
           >
-            <Image
+            <Img
+              style={ImageStyle}
               alt="product"
               src={product ? product.image[imageIndex] : null}
+              loader={
+                <div className={cssloading}>
+                  <RiseLoader
+                    sizeUnit={"px"}
+                    size={20}
+                    color={"rgba(255, 255, 255, 0.6)"}
+                    loading={this.state.loading}
+                  />
+                </div>
+              }
             />
           </ImageContainer>
-          {/* <Image
-            alt="product"
-            src={product ? product.image[imageIndex] : null}
-          />
- */}
 
           <NavBarBottom>
             <InfoBtn onClick={this.handleShowInfo}>
+              <Text>INFO</Text>
               <FontAwesomeIcon
                 icon="question-circle"
-                color="rgba(255,255,255,0.9)"
+                color="rgba(255,255,255,0.8)"
               />
             </InfoBtn>
           </NavBarBottom>

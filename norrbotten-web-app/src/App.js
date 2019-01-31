@@ -3,6 +3,7 @@ import styled, { css, keyframes } from "react-emotion";
 import "./App.css";
 import "./reset.css";
 import Img from "react-image";
+import BounceLoader from "react-spinners/BounceLoader";
 
 import About from "./components/Story";
 import Backdrop from "./components/Backdrop";
@@ -39,23 +40,9 @@ const bg = {
   left: "0"
 };
 
-const background = css`
-  min-height: 100%;
-  min-width: 1024px;
-  width: 100%;
-  max-height: auto;
-  position: fixed;
-  top: 0;
-  left: 0;
-  animation: ${fadeIn};
-  animation-duration: 2s;
-  animation-delay: 0.5s;
-  animation-fill-mode: both;
-`;
-
 const head = css`
-  height: 5%;
-  min-height: 5%;
+  height: 30px;
+  min-height: 30px;
   display: flex;
   justify-content: flex-end;
   @media screen and (max-height: 550px) {
@@ -78,9 +65,6 @@ const navContainer = css`
   justify-content: flex-start;
   label: navContainer;
   @media screen and (max-width: 1124px) {
-    margin-left: 0;
-  }
-  @media screen and (max-width: 1000px) {
     margin-left: 0;
   }
 `;
@@ -122,13 +106,25 @@ const Text = styled("p")`
 `;
 
 const Foo = styled("div")`
-  background: red;
   label: FOO;
   opacity: 0;
   animation: ${fadeIn};
   animation-duration: 2s;
-  animation-delay: 0.5s;
+  animation-delay: 1s;
   animation-fill-mode: both;
+`;
+const loadingBackground = css`
+  position: fixed;
+  margin-left: 20%;
+  padding-left: 310px;
+  margin-top: 7%;
+  padding-top: 30px;
+  @media screen and (max-width: 1124px) {
+    margin-left: 0;
+  }
+  @media screen and (max-height: 550px) {
+    padding-top: 0;
+  }
 `;
 
 class App extends Component {
@@ -169,10 +165,6 @@ class App extends Component {
     }));
   };
 
-  handleEmailClick() {
-    window.location.href = `mailto:info@title.com`;
-  }
-
   render() {
     const {
       contentShowing,
@@ -182,10 +174,24 @@ class App extends Component {
     } = this.state;
     return (
       <div className={all}>
-        <img
-          className={background}
+        <Img
+          style={bg}
           src={require("./backgroundImages/CR1.jpg")}
+          loader={
+            <div className={loadingBackground}>
+              <BounceLoader
+                sizeUnit={"px"}
+                size={42}
+                color={"rgba(255, 55, 115, 1)"}
+                loading={this.state.loading}
+              />
+            </div>
+          }
+          container={children => {
+            return <Foo>{children}</Foo>;
+          }}
         />
+
         {contentShowing && contentShowing !== "About" ? (
           <Img
             src={require("./backgroundImages/CR3.jpg")}

@@ -19,12 +19,14 @@ const fadeIn = keyframes`
 const Container = styled("div")`
   justify-content: flex-end;
   box-sizing: border-box;
-  text-align: end;
-  font-size: 1.1em;
-  font-weight: 400;
-  line-height: 1.5;
   transition: background-color 1.5s ease;
-  background-color: rgba(0, 0, 0, 0.6);
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 0.4) 20%,
+    rgba(0, 0, 0, 0.6) 50%,
+    rgba(0, 0, 0, 1) 100%
+  );
   &:hover {
     background-color: rgba(0, 0, 0, 1);
   }
@@ -36,12 +38,8 @@ const Container = styled("div")`
   white-space: nowrap;
   width: min-content;
   label: INFOTEXT;
-  color: rgba(255, 255, 255, 0.8);
   @media screen and (max-width: 1200px) {
     margin-left: 0;
-  }
-  @media screen and (max-width: 620px) {
-    display: none;
   }
 `;
 

@@ -3,7 +3,7 @@ import ContentContainer from "./ContentContainer";
 import styled, { keyframes } from "react-emotion";
 import StoryLine from "./StoryLine";
 
-const fadeIn = keyframes`
+const fadeInLatest = keyframes`
   from {
     opacity: 0;
   }
@@ -11,7 +11,22 @@ const fadeIn = keyframes`
     opacity: 1;
   }
 `;
+const fadeIn = keyframes`
+  0% {
+    opacity: 0;
+    transform: translateX(-50%) scaleX(0);
+    
+  }
+  30% {
+      transform: translateX(0) scaleX(1);
+  }
+  100%{
+    opacity: 1;
+
+  }
+`;
 const Text1 = styled("p")`
+  width: 620px;
   padding: 3% 1% 3% 1%;
   font-family: eurostile-condensed, sans-serif;
   font-weight: 400;
@@ -20,8 +35,11 @@ const Text1 = styled("p")`
   text-align: center;
   cursor: default;
   color: rgba(245, 174, 173, 0.9);
+  opacity: 0;
   animation: ${fadeIn};
-  animation-duration: 1s;
+  animation-duration: 3s;
+  animation-delay: 1s;
+  animation-fill-mode: forwards;
   transition: background-color 1.5s ease;
   background: linear-gradient(
     90deg,
@@ -29,25 +47,26 @@ const Text1 = styled("p")`
     rgba(0, 0, 0, 0.6) 85%,
     rgba(0, 0, 0, 0) 100%
   );
-  label: StoryContainer1;
+  label: Text1;
   &:hover {
     background-color: rgba(0, 0, 0, 0.8);
   }
 `;
-const Text11 = styled("p")`
+const TextAbout = styled("p")`
+  width: 620px;
   font-size: 1.4em;
   padding: 2% 1% 0 1%;
   font-family: eurostile-condensed, sans-serif;
-
   font-weight: 400;
-
   font-style: normal;
   text-align: center;
   cursor: default;
   color: rgba(255, 255, 255, 0.7);
-  font-weight: 400;
+  opacity: 0;
   animation: ${fadeIn};
-  animation-duration: 1s;
+  animation-duration: 3s;
+  animation-delay: 3.5s;
+  animation-fill-mode: forwards;
   transition: background-color 1.5s ease;
   background: linear-gradient(
     90deg,
@@ -55,12 +74,13 @@ const Text11 = styled("p")`
     rgba(0, 0, 0, 0.7) 85%,
     rgba(0, 0, 0, 0) 100%
   );
-  label: StoryContainer1;
+  label: TextAbout;
   &:hover {
     background-color: rgba(0, 0, 0, 1);
   }
 `;
 const Text12 = styled("p")`
+  width: 620px;
   padding: 2% 1%;
   font-size: 0.8em;
   font-family: eurostile, sans-serif;
@@ -71,10 +91,12 @@ const Text12 = styled("p")`
   color: rgba(245, 174, 173, 0.9);
   font-weight: 400;
   cursor: pointer;
+  label: text12;
 `;
 
 const Text2 = styled("p")`
-  padding: 2% 2%;
+  width: 620px;
+  padding: 2% 1%;
   font-size: 1.3em;
   font-family: eurostile-condensed, sans-serif;
   font-weight: 400;
@@ -82,10 +104,12 @@ const Text2 = styled("p")`
   text-align: center;
   cursor: default;
   color: rgba(255, 255, 255, 0.7);
+  label: text2;
 `;
 
 const Text3 = styled("p")`
-  padding: 2% 2%;
+  width: 620px;
+  padding: 2% 1%;
   font-size: 1em;
   font-family: eurostile-condensed, sans-serif;
   font-weight: 400;
@@ -93,31 +117,38 @@ const Text3 = styled("p")`
   text-align: center;
   cursor: default;
   color: rgba(255, 255, 255, 0.7);
+  label: text3;
 `;
 const StoryContainer0 = styled("div")`
   display: flex;
   flex-direction: column;
   justify-content: baseline;
-  width: 620px;
+  width: 100%;
   height: 100%;
+  label: storycontainer0;
 `;
 
 const StoryContainer1 = styled("div")`
   display: flex;
   flex-direction: column;
-  width: 620px;
+  width: 100%;
   min-width: 620px;
   height: fit-content;
+  label: storycontainer1;
 `;
 
 const StoryContainer2 = styled("div")`
+  padding: 0 1%;
   display: flex;
   flex-direction: column;
   width: 620px;
   min-width: 620px;
   height: 120px;
-  animation: ${fadeIn};
-  animation-duration: 4s;
+  opacity: 0;
+  animation: ${fadeInLatest};
+  animation-duration: 8s;
+  animation-delay: 7s;
+  animation-fill-mode: forwards;
   transition: background-color 1.5s ease;
   background: linear-gradient(
     90deg,
@@ -135,7 +166,7 @@ const SecondAndLineContainer = styled("div")`
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  width: 620px;
+  width: 100%;
   min-width: 620px;
   height: fill-available;
   label: SecondAndLineContainer;
@@ -156,14 +187,15 @@ export default class Story extends React.Component {
             <Text1>
               MY NAME IS JOEL AND I'M A DESIGNER & DEVELOPER FROM LULEÅ
             </Text1>
-            <Text11>
+            <StoryLine />
+            <TextAbout>
               I'M CURRENTLY LOCATED IN GOTHENBURG LOOKING FOR A CREATIVE AND
               CHALLENGING WORKPLACE. GOT A LEAD? CONTACT ME @
               <Text12 onClick={this.handleClick}>
                 {" "}
                 joelsundqvist@protonmail.com
               </Text12>
-            </Text11>
+            </TextAbout>
           </StoryContainer1>
           <SecondAndLineContainer onClick={this.props.handleClose}>
             <StoryContainer2

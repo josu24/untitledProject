@@ -24,7 +24,7 @@ const InfoLine = styled("span")`
   width: 100%;
   animation: ${lineUp};
   animation-duration: 1.5s;
-  animation-delay: 0.8s;
+  animation-delay: 1s;
   animation-fill-mode: both;
   &::after {
     content: "";
@@ -33,13 +33,12 @@ const InfoLine = styled("span")`
     height: 3px;
     background: linear-gradient(
       90deg,
-      rgba(255, 55, 115, 0.8) 0%,
-      rgba(255, 55, 115, 0.9) 29%,
-      rgba(255, 55, 115, 1) 54%,
-      rgba(255, 55, 115, 0.8) 65%,
-      rgba(255, 55, 115, 0.6) 76%,
-      rgba(255, 55, 115, 0.4) 93%,
-      rgba(255, 55, 115, 0.4) 100%
+      rgba(255, 55, 115, 0.9) 0%,
+      rgba(255, 55, 115, 0.9) 30%,
+      rgba(255, 55, 115, 0.8) 45%,
+      rgba(255, 55, 115, 0.4) 75%,
+      rgba(255, 55, 115, 0.4) 90%,
+      rgba(255, 55, 115, 0) 100%
     );
     width: 100%;
   }

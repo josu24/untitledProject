@@ -27,6 +27,7 @@
     "react-image-lightbox": "^5.0.0",
     "react-preload": "^0.6.0",
     "react-scripts": "1.1.1",
+    "react-spinners": "^0.5.1",
     "react-svg-pathline": "^0.5.0",
     "react-visibility-sensor": "^5.0.2"
   },
