@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import ReactDOM from "react-dom";
 import styled, { css, keyframes } from "react-emotion";
 import "./App.css";
 import "./reset.css";
@@ -48,11 +49,18 @@ const head = css`
   @media screen and (max-height: 550px) {
     display: none;
   }
+  @media screen and (max-width: 600px) {
+    display: none;
+  }
 `;
 const app = css`
   height: fill-available;
   display: flex;
   label: app;
+  @media screen and (max-width: 600px) {
+    flex-direction: column;
+    overflow: scroll;
+  }
 `;
 const navContainer = css`
   z-index: 10;
@@ -67,6 +75,10 @@ const navContainer = css`
   @media screen and (max-width: 1124px) {
     margin-left: 0;
   }
+  @media screen and (max-width: 600px) {
+    margin-top: 150px;
+    min-width: 100%;
+  }
 `;
 const contentPlaceholder = css`
   display: flex;
@@ -76,12 +88,21 @@ const contentPlaceholder = css`
   display: flex;
   label: contentPlaceholder;
   @media screen and (max-width: 600px) {
-    display: none;
+    margin-top: 70px;
+    margin-right: 0;
   }
 `;
 const navContainerMen = css`
   padding: 0;
   text-align: center;
+  @media screen and (max-width: 600px) {
+    width: 100%;
+  }
+`;
+const divContainerMen = css`
+  @media screen and (max-width: 600px) {
+    width: 100%;
+  }
 `;
 const logo = css`
   background: linear-gradient(
@@ -98,6 +119,9 @@ const logo = css`
   justify-content: center;
   align-items: center;
   font-weight: 400;
+  @media screen and (max-width: 600px) {
+    min-width: 100%;
+  }
 `;
 const Text = styled("p")`
   padding-top: 6px;
@@ -122,7 +146,13 @@ const loadingBackground = css`
   @media screen and (max-width: 1124px) {
     margin-left: 0;
   }
-  @media screen and (max-height: 550px) {
+  @media screen and (max-height: 550px) and (min-width: 600px) {
+    padding-top: 0;
+  }
+  @media screen and (max-width: 600px) {
+    margin-top: 150px;
+    margin-left: 10px;
+    padding-left: 0;
     padding-top: 0;
   }
 `;
@@ -136,6 +166,7 @@ class App extends Component {
       dividerVisible: false,
       showInfo: false
     };
+    this.infoRef = React.createRef();
     this.handleClick = this.handleClick.bind(this);
     this.handleClose = this.handleClose.bind(this);
   }
@@ -207,7 +238,7 @@ class App extends Component {
           {contentShowing ? <Backdrop onClick={this.handleClose} /> : null}
           <div className={navContainer}>
             {/* <--Menu Begin--> */}
-            <div>
+            <div className={divContainerMen}>
               <nav className={navContainerMen}>
                 <ul>
                   <li>

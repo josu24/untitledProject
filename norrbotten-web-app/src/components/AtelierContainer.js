@@ -52,6 +52,9 @@ const AtelierContainer = styled("div")`
   justify-content: flex-end;
   width: 100%;
   height: 80%;
+  @media screen and (max-width: 600px) {
+    justify-content: flex-start;
+  }
   label: AtelierContainer;
 `;
 
@@ -59,6 +62,10 @@ const AtelierContainerText = styled("div")`
   display: flex;
   flex-direction: column;
   width: 420px;
+  @media screen and (max-width: 600px) {
+    width: 100%;
+    min-width: 100%;
+  }
   min-width: 420px;
   min-height: 100px;
   max-height: 100px;

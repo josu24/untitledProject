@@ -27,6 +27,11 @@ const fadeIn = keyframes`
 `;
 const Text1 = styled("p")`
   width: 620px;
+  @media screen and (max-width: 600px) {
+    width: 100%;
+    font-size: 1.2em;
+    padding: 3% 0 3% 0;
+  }
   padding: 3% 1% 3% 1%;
   font-family: eurostile-condensed, sans-serif;
   font-weight: 400;
@@ -54,6 +59,11 @@ const Text1 = styled("p")`
 `;
 const TextAbout = styled("p")`
   width: 620px;
+  @media screen and (max-width: 600px) {
+    width: 100%;
+    font-size: 1.2em;
+    padding: 2% 0 0 0;
+  }
   font-size: 1.4em;
   padding: 2% 1% 0 1%;
   font-family: eurostile-condensed, sans-serif;
@@ -81,6 +91,10 @@ const TextAbout = styled("p")`
 `;
 const Text12 = styled("p")`
   width: 620px;
+  @media screen and (max-width: 600px) {
+    width: 100%;
+    padding: 2% 0;
+  }
   padding: 2% 1%;
   font-size: 0.8em;
   font-family: eurostile, sans-serif;
@@ -96,6 +110,11 @@ const Text12 = styled("p")`
 
 const Text2 = styled("p")`
   width: 620px;
+  @media screen and (max-width: 600px) {
+    width: 100%;
+    font-size: 1.2em;
+    padding: 2% 0;
+  }
   padding: 2% 1%;
   font-size: 1.3em;
   font-family: eurostile-condensed, sans-serif;
@@ -109,6 +128,11 @@ const Text2 = styled("p")`
 
 const Text3 = styled("p")`
   width: 620px;
+  @media screen and (max-width: 600px) {
+    width: 100%;
+    font-size: 0.9em;
+    padding: 2% 0;
+  }
   padding: 2% 1%;
   font-size: 1em;
   font-family: eurostile-condensed, sans-serif;
@@ -133,16 +157,22 @@ const StoryContainer1 = styled("div")`
   flex-direction: column;
   width: 100%;
   min-width: 620px;
+  @media screen and (max-width: 600px) {
+    min-width: 100%;
+  }
   height: fit-content;
   label: storycontainer1;
 `;
 
 const StoryContainer2 = styled("div")`
-  padding: 0 1%;
   display: flex;
   flex-direction: column;
   width: 620px;
   min-width: 620px;
+  @media screen and (max-width: 600px) {
+    width: 100%;
+    min-width: 100%;
+  }
   height: 120px;
   opacity: 0;
   animation: ${fadeInLatest};
@@ -168,6 +198,10 @@ const SecondAndLineContainer = styled("div")`
   justify-content: flex-end;
   width: 100%;
   min-width: 620px;
+  @media screen and (max-width: 600px) {
+    min-width: 100%;
+    height: 300px;
+  }
   height: fill-available;
   label: SecondAndLineContainer;
 `;

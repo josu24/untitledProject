@@ -2,6 +2,7 @@ import React from "react";
 import styled, { css, keyframes } from "react-emotion";
 import RiseLoader from "react-spinners/RiseLoader";
 import Img from "react-image";
+import Swipe from "react-easy-swipe";
 import Lightbox from "react-image-lightbox";
 import "react-image-lightbox/style.css";
 import getProducts from "../productFactory";
@@ -49,7 +50,9 @@ const ContentContainer2 = styled("div")`
   height: 500px;
   min-height: 500px;
   min-width: 334px;
-
+  @media screen and (max-width: 600px) {
+    min-width: 100%;
+  }
   label: ContentContainer2;
 `;
 
@@ -86,6 +89,7 @@ const NavBarTop = styled("div")`
 `;
 const ImageContainer = styled("div")`
   display: flex;
+  justify-content: center;
   background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6));
   height: 90%;
   cursor: pointer;
@@ -115,6 +119,9 @@ const InfoBtn = styled("div")`
   justify-content: flex-start;
   align-items: center;
   cursor: pointer;
+  @media screen and (max-width: 600px) {
+    display: none;
+  }
   label: info-btn;
 `;
 
@@ -136,8 +143,8 @@ var ImageStyle = {
 };
 
 const cssloading = css`
-  margin-left: 107px;
-  margin-top: 210px;
+  margin-top: 100%;
+  label: cssloading;
 `;
 
 const Text = styled("span")`
@@ -159,15 +166,11 @@ export default class ProductContainer extends React.Component {
       productIndex: 0,
       showInfo: false,
       imageIndex: 0,
-      dragging: false,
       isOpen: false,
       photoIndex: 0,
       loading: true
     };
     this.handleShowInfo = this.handleShowInfo.bind(this);
-    this.onNextImageClick = this.onNextImageClick.bind(this);
-    this.onPrevImageClick = this.onPrevImageClick.bind(this);
-    this.handleDrag = this.handleDrag.bind(this);
   }
 
   componentDidMount() {
@@ -177,9 +180,6 @@ export default class ProductContainer extends React.Component {
       products,
       numOfProducts
     });
-    /* var rect = ReactDOM.findDOMNode(this).getBoundingClientRect()
-		console.log(rect)
-		console.log(rect.bottom) */
   }
 
   changeProduct(step) {
@@ -191,23 +191,7 @@ export default class ProductContainer extends React.Component {
       productIndex: newIndex
     });
   }
-  onNextImageClick() {
-    const { dragging } = this.state;
-    if (!dragging) {
-      this.setState({ imageIndex: this.state.imageIndex + 1 });
-    }
-    this.setState({ dragging: false });
-  }
-  onPrevImageClick() {
-    const { dragging } = this.state;
-    if (!dragging) {
-      this.setState({ imageIndex: this.state.imageIndex - 1 });
-    }
-    this.setState({ dragging: false });
-  }
-  handleDrag() {
-    this.setState({ dragging: true });
-  }
+
   handleShowInfo() {
     this.props.callbackFromApp();
     this.setState(prevState => ({
@@ -257,21 +241,30 @@ export default class ProductContainer extends React.Component {
               console.log("SCROLL");
             }}
           >
-            <Img
-              style={ImageStyle}
-              alt="product"
-              src={product ? product.image[imageIndex] : null}
-              loader={
-                <div className={cssloading}>
-                  <RiseLoader
-                    sizeUnit={"px"}
-                    size={20}
-                    color={"rgba(255, 255, 255, 0.6)"}
-                    loading={this.state.loading}
-                  />
-                </div>
-              }
-            />
+            <Swipe
+              onSwipeLeft={() => {
+                this.changeProduct(1);
+              }}
+              onSwipeRight={() => {
+                this.changeProduct(-1);
+              }}
+            >
+              <Img
+                style={ImageStyle}
+                alt="product"
+                src={product ? product.image[imageIndex] : null}
+                loader={
+                  <div className={cssloading}>
+                    <RiseLoader
+                      sizeUnit={"px"}
+                      size={20}
+                      color={"rgba(255, 255, 255, 0.6)"}
+                      loading={loading}
+                    />
+                  </div>
+                }
+              />
+            </Swipe>
           </ImageContainer>
 
           <NavBarBottom>

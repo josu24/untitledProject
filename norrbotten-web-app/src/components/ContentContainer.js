@@ -17,23 +17,13 @@ const Container = styled("div")`
   z-index: 10;
   min-height: 500px;
   label: ContentContainer;
+  @media screen and (max-width: 600px) {
+    width: 100%;
+  }
 `;
-/* 
-animation: ${fadeIn};
-  animation-duration: 1.5s;
-  animation-delay: 1s;
-  animation-fill-mode: both; */
 
 export default class ContentContainer extends React.Component {
   render() {
-    const show = this.props.rerender;
-    console.log(show);
-    /* console.log("render", this.props.children); */
-    return (
-      <Container>
-        {/* animationdelay={show ? `0.2s` : `1.5s`} */}
-        {this.props.children}
-      </Container>
-    );
+    return <Container>{this.props.children}</Container>;
   }
 }

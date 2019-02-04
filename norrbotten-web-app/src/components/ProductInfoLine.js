@@ -16,7 +16,9 @@ const Wrapper = styled("div")`
   min-height: 3px;
   width: 95%;
   top: 0;
-  label: div_wrapper;
+  @media screen and (max-width: 600px) {
+    width: 100%;
+  }
 `;
 
 const InfoLine = styled("span")`
@@ -30,15 +32,27 @@ const InfoLine = styled("span")`
     left: 0;
     display: block;
     height: 3px;
-    background: linear-gradient(
-      90deg,
-      rgba(255, 55, 115, 0.9) 0%,
-      rgba(255, 55, 115, 0.9) 30%,
-      rgba(255, 55, 115, 0.8) 45%,
-      rgba(255, 55, 115, 0.4) 75%,
-      rgba(255, 55, 115, 0.4) 90%,
-      rgba(255, 55, 115, 0) 100%
-    );
+    @media screen and (min-width: 600px) {
+      background: linear-gradient(
+        90deg,
+        rgba(255, 55, 115, 0.9) 0%,
+        rgba(255, 55, 115, 0.9) 30%,
+        rgba(255, 55, 115, 0.8) 45%,
+        rgba(255, 55, 115, 0.4) 75%,
+        rgba(255, 55, 115, 0.4) 90%,
+        rgba(255, 55, 115, 0) 100%
+      );
+    }
+    @media screen and (max-width: 600px) {
+      background: linear-gradient(
+        90deg,
+        rgba(255, 55, 115, 0.9) 0%,
+        rgba(255, 55, 115, 0.9) 30%,
+        rgba(255, 55, 115, 0.8) 45%,
+        rgba(255, 55, 115, 0.8) 75%,
+        rgba(255, 55, 115, 0.7) 100%
+      );
+    }
     width: 100%;
   }
 `;
