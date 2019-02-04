@@ -1,4 +1,4 @@
-import styled, { keyframes } from "react-emotion";
+import styled from "react-emotion";
 
 const Backdrop = styled("div")`
   label: BACKDROP;

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import ReactDOM from "react-dom";
 import styled, { css, keyframes } from "react-emotion";
+import RandomTextGenerator from "react-scrolling-text";
 import "./App.css";
 import "./reset.css";
 import Img from "react-image";
@@ -245,7 +245,31 @@ class App extends Component {
                     <a />
 
                     <a id="logo" className={logo}>
-                      <Text>Joel Sundqvist</Text>
+                      <Text>
+                        <RandomTextGenerator
+                          charList={[
+                            "@",
+                            "/",
+                            ":",
+                            ".",
+                            "=",
+                            "(",
+                            "&",
+                            "}",
+                            "]",
+                            "!",
+                            "%",
+                            "`",
+                            "*",
+                            "-",
+                            "_",
+                            ";"
+                          ]}
+                          text={"Joel Sundqvist"}
+                          interval={100}
+                          timePerChar={100}
+                        />
+                      </Text>
                     </a>
                     <ul>
                       <MenuItem

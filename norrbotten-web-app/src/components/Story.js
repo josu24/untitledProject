@@ -2,6 +2,7 @@ import React from "react";
 import ContentContainer from "./ContentContainer";
 import styled, { keyframes } from "react-emotion";
 import StoryLine from "./StoryLine";
+import RandomTextGenerator from "react-scrolling-text";
 
 const fadeInLatest = keyframes`
   from {
@@ -18,11 +19,31 @@ const fadeIn = keyframes`
     
   }
   30% {
-      transform: translateX(0) scaleX(1);
+    opacity: 0.7;
+      
+  }
+  50%{
+    opacity: 1;
+  }
+  100%{
+    transform: translateX(0) scaleX(1);
+    opacity: 1;
+
+  }
+`;
+const fadeInAbout = keyframes`
+  0% {
+    opacity: 0;
+    transform: translateX(-50%) scaleX(0);
+    
+  }
+  30% {
+    transform: translateX(0) scaleX(1);
+    opacity: 1;
+      
   }
   100%{
     opacity: 1;
-
   }
 `;
 const Text1 = styled("p")`
@@ -43,7 +64,7 @@ const Text1 = styled("p")`
   opacity: 0;
   animation: ${fadeIn};
   animation-duration: 3s;
-  animation-delay: 1s;
+  animation-delay: 0.1s;
   animation-fill-mode: forwards;
   transition: background-color 1.5s ease;
   background: linear-gradient(
@@ -73,9 +94,9 @@ const TextAbout = styled("p")`
   cursor: default;
   color: rgba(255, 255, 255, 0.7);
   opacity: 0;
-  animation: ${fadeIn};
-  animation-duration: 3s;
-  animation-delay: 3.5s;
+  animation: ${fadeInAbout};
+  animation-duration: 2s;
+  animation-delay: 4.2s;
   animation-fill-mode: forwards;
   transition: background-color 1.5s ease;
   background: linear-gradient(
@@ -219,7 +240,14 @@ export default class Story extends React.Component {
         <StoryContainer0>
           <StoryContainer1>
             <Text1>
-              MY NAME IS JOEL AND I'M A DESIGNER & DEVELOPER FROM LULEÅ
+              <RandomTextGenerator
+                charList={[":", ",", ";"]}
+                text={
+                  "MY NAME IS JOEL AND I'M A DESIGNER & DEVELOPER FROM LULEÅ"
+                }
+                interval={70}
+                timePerChar={70}
+              />
             </Text1>
             <StoryLine />
             <TextAbout>

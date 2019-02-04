@@ -1,14 +1,6 @@
 import React from "react";
-import styled, { keyframes } from "react-emotion";
+import styled from "react-emotion";
 
-/* const fadeIn = keyframes`
-  from {
-    opacity: 0;
-  }
-  to{
-    opacity: 1;
-  }
-`; */
 const Container = styled("div")`
   display: flex;
   justify-content: flex-start;
