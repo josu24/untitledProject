@@ -107,16 +107,19 @@ const divContainerMen = css`
 const logo = css`
   background: linear-gradient(
     90deg,
-    rgba(245, 174, 173, 1) 50%,
+    rgba(245, 174, 173, 1) 10%,
     rgba(255, 55, 115, 1) 100%
   );
-  border-radius: 0;
-  width: 0;
   margin: 0;
+  opacity: 0.8;
+  position: absolute;
+  top: 0;
   height: 42px;
+  cursor: pointer;
   width: 294px !important;
+  display: flex;
   text-align: center;
-  justify-content: center;
+  justify-content: flex-end;
   align-items: center;
   font-weight: 400;
   @media screen and (max-width: 600px) {
@@ -124,9 +127,19 @@ const logo = css`
   }
 `;
 const Text = styled("p")`
-  padding-top: 6px;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.2) 0%,
+    rgba(255, 255, 255, 1) 20%,
+    rgba(255, 255, 255, 1) 80%,
+    rgba(255, 255, 255, 0.2) 100%
+  );
+  width: 100%;
+  padding-top: 2px;
+  height: 34px;
   font-size: 1.6em;
   color: black;
+  cursor: pointer;
 `;
 
 const Foo = styled("div")`

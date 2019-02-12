@@ -60,7 +60,7 @@ const Text1 = styled("p")`
   font-size: 1.4em;
   text-align: center;
   cursor: default;
-  color: rgba(245, 174, 173, 0.9);
+  color: rgba(255, 255, 255, 0.7);
   opacity: 0;
   animation: ${fadeIn};
   animation-duration: 3s;

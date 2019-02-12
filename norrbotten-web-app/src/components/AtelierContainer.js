@@ -18,7 +18,9 @@ const fadeIn = keyframes`
   }
 `;
 const Text1 = styled("p")`
-  padding: 2% 2%;
+  display: flex;
+  align-self: center;
+  padding: 3% 3%;
   font-size: 0.9em;
   text-align: center;
   cursor: default;
@@ -26,20 +28,23 @@ const Text1 = styled("p")`
   font-weight: 300;
 `;
 const Text2 = styled("p")`
-  padding: 2% 2%;
+  display: flex;
   font-size: 1.6em;
   text-align: center;
   color: black;
-  opacity: 0.7;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
   background: linear-gradient(
     90deg,
-    rgb(255, 55, 115) 5%,
-    rgb(245, 174, 173) 45%
+    rgba(255, 255, 255, 0.2) 0%,
+    rgba(255, 255, 255, 1) 20%,
+    rgba(255, 255, 255, 1) 80%,
+    rgba(255, 255, 255, 0.2) 100%
   );
   font-weight: 400;
-  width: 50%;
-  align-self: center;
-  cursor: pointer;
+  width: 100%;
+  opacity: 0.7;
   transition: opacity 1s ease;
   &:hover {
     opacity: 1;
@@ -60,6 +65,7 @@ const AtelierContainer = styled("div")`
 
 const AtelierContainerText = styled("div")`
   display: flex;
+  label: AtelierContainerText;
   flex-direction: column;
   width: 420px;
   @media screen and (max-width: 600px) {
@@ -82,6 +88,21 @@ const AtelierContainerText = styled("div")`
   );
 `;
 
+const Text2Wrapper = styled("div")`
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  opacity: 0.8;
+  height: 38px;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 55, 115, 1) 30%,
+    rgba(245, 174, 173, 1) 100%
+  );
+  align-self: center;
+  cursor: pointer;
+`;
+
 export default class Story extends React.Component {
   handleClick() {
     window.location.href = "http://www.google.com";
@@ -99,7 +120,9 @@ export default class Story extends React.Component {
             }}
           >
             <Text1>Atelier located in norrbotten</Text1>
-            <Text2 onClick={this.handleClick}>Go to Website</Text2>
+            <Text2Wrapper>
+              <Text2 onClick={this.handleClick}>Go to Website</Text2>
+            </Text2Wrapper>
           </AtelierContainerText>
 
           <StoryLine />
