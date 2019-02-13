@@ -105,7 +105,7 @@ const Text2Wrapper = styled("div")`
 
 export default class Story extends React.Component {
   handleClick() {
-    window.location.href = "http://www.google.com";
+    window.location.href = "https://atelier-avan.herokuapp.com/";
   }
   render() {
     return (

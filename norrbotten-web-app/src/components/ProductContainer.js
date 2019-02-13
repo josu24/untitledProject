@@ -1,6 +1,5 @@
 import React from "react";
 import styled, { css, keyframes } from "react-emotion";
-import ProductName from "./ProductName";
 import RiseLoader from "react-spinners/RiseLoader";
 import Img from "react-image";
 import Swipe from "react-easy-swipe";
@@ -222,10 +221,7 @@ export default class ProductContainer extends React.Component {
             >
               <FontAwesomeIcon icon="angle-left" />
             </NavBtn>
-            <Name>
-              {/* <ProductName name={ptext} /> */}
-              {product ? product.name : "no product"}
-            </Name>
+            <Name>{product ? product.name : "no product"}</Name>
             <NavBtn
               onClick={() => {
                 this.changeProduct(1);
@@ -252,6 +248,7 @@ export default class ProductContainer extends React.Component {
               onSwipeRight={() => {
                 this.changeProduct(-1);
               }}
+              tolerance={100}
             >
               <Img
                 style={ImageStyle}
